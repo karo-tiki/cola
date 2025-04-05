@@ -9,30 +9,22 @@ private:
     T* tail;
 
 public:
-
     Cola() {
-        head = NULL;
-        tail = NULL;
+        head = nullptr;
+        tail = nullptr;
     }
 
-
     void push(T value) {
-        if (head == NULL && tail == NULL) {
-
+        if (head == nullptr && tail == nullptr) {
             arr[0] = value;
             head = &arr[0];
             tail = &arr[0];
-        }
-        else if ((tail + 1 == head) || (tail == &arr[9] && head == &arr[0])) {
-
-            cout << "La cola esta llena." << endl;
-        }
-        else {
-
+        } else if ((tail + 1 == head) || (tail == &arr[9] && head == &arr[0])) {
+            cout << "La cola está llena." << endl;
+        } else {
             if (tail == &arr[9]) {
                 tail = &arr[0];
-            }
-            else {
+            } else {
                 tail++;
             }
             *tail = value;
@@ -41,31 +33,28 @@ public:
 
     bool pop(T& v) {
         if (head == nullptr && tail == nullptr) {
-            cout << "La cola esta vacia." << endl;
+            cout << "La cola está vacía." << endl;
             return false;
-        }
-        else {
+        } else {
             v = *head;
-            if (head == tail) {
 
+            if (head == tail) {
                 head = nullptr;
                 tail = nullptr;
-            }
-            else {
-
+            } else {
                 if (head == &arr[9]) {
                     head = &arr[0];
-                }
-                else {
+                } else {
                     head++;
                 }
             }
             return true;
         }
     }
+
     void mostrar() {
-        if (head == nullptr && tail == NULL) {
-            cout << "La cola está vacia." << endl;
+        if (head == nullptr && tail == nullptr) {
+            cout << "La cola está vacía." << endl;
             return;
         }
 
@@ -75,8 +64,7 @@ public:
             cout << *ptr << " ";
             if (ptr == &arr[9]) {
                 ptr = &arr[0];
-            }
-            else {
+            } else {
                 ptr++;
             }
         }
@@ -86,23 +74,19 @@ public:
 
 int main() {
     Cola<int> miCola;
-    miCola.push(1);
-    miCola.push(2);
-    miCola.push(3);
-    miCola.push(4);
+
     miCola.push(5);
-    miCola.push(6);
+    miCola.push(3);
     miCola.push(7);
-    miCola.push(8);
-    miCola.push(9);
-    miCola.push(10);
-    miCola.push(11);
+
     miCola.mostrar();
+
     int valorEliminado;
     if (miCola.pop(valorEliminado)) {
         cout << "Elemento eliminado: " << valorEliminado << endl;
     }
+
     miCola.mostrar();
-    miCola.push(80);
+
     return 0;
 }
